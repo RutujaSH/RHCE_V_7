@@ -1,0 +1,71 @@
+ 3  2020-11-21 09:17:48ip a
+    4  2020-11-21 09:18:09hostname
+    5  2020-11-21 09:18:30vim /etc/hosts
+    6  2020-11-21 09:22:19ip a
+    7  2020-11-21 09:43:32yum install targetcli -y
+    8  2020-11-21 09:45:18yum install iscsi-initiator-utils
+    9  2020-11-21 09:53:12vim /etc/iscsi/initiatorname.iscsi
+   10  2020-11-21 09:53:57man iscsiadm
+   11  2020-11-21 09:54:45 iscsiadm --mode discoverydb --type sendtargets --portal 172.31.24.207 --discover
+   12  2020-11-21 09:54:50man iscsiadm
+   13  2020-11-21 09:56:04iscsiadm --mode node --targetname iqn.2017-18.com.example.network:desktop --portal 172.31.24.207:3260 --login
+   14  2020-11-21 09:56:08df -h
+   15  2020-11-21 09:57:27iscsiadm --mode node --targetname iqn.2017-18.com.example.network:desktop --portal 172.31.24.207:3260 --logout
+   16  2020-11-21 09:57:33df -h
+   17  2020-11-21 09:58:03systemctl restart iscsid iscsi
+   18  2020-11-21 09:58:19systemctl enable iscsid iscsi
+   19  2020-11-21 09:58:56iscsiadm --mode node --targetname iqn.2017-18.com.example.network:desktop --portal 172.31.24.207:3260 --login
+   20  2020-11-21 09:59:00df -h
+   21  2020-11-21 10:00:11lsblk
+   22  2020-11-21 10:00:19iscsiadm --mode node --targetname iqn.2017-18.com.example.network:desktop --portal 172.31.24.207:3260 --login
+   23  2020-11-21 10:00:22lsblk
+   24  2020-11-21 10:00:39iscsiadm --mode node --targetname iqn.2017-18.com.example.network:desktop --portal 172.31.24.207:3260 --logout
+   25  2020-11-21 10:00:42lsblk
+   26  2020-11-21 10:00:48iscsiadm --mode node --targetname iqn.2017-18.com.example.network:desktop --portal 172.31.24.207:3260 --login
+   27  2020-11-21 10:01:31fdisk /dev/sda
+   28  2020-11-21 10:02:27partprobe /dev/sda
+   29  2020-11-21 10:02:35lsblk
+   30  2020-11-21 10:03:18mkfs.ext4 /dev/sda1
+   31  2020-11-21 10:03:44mkdir /shareddisk
+   32  2020-11-21 10:03:58chmod 0644 /shareddisk/
+   33  2020-11-21 10:04:24blkid /dev/sda1
+   34  2020-11-21 10:04:43vim /etc/fstab
+   35  2020-11-21 10:05:43mount -a
+   36  2020-11-21 10:05:48df -h
+   37  2020-11-21 10:06:18targetcli
+   38  2020-11-21 10:06:26history
+   39  2020-11-21 10:08:29yum install nfs-utils -y
+   40  2020-11-21 10:11:28mkdir /nfsdata
+   41  2020-11-21 10:11:56vim /etc/fstab
+   42  2020-11-21 10:13:50mount -a
+   43  2020-11-21 10:13:54df -h
+   44  2020-11-21 10:15:30yum install samba-client cifs-utils -y
+   45  2020-11-21 10:21:30ip a
+   46  2020-11-21 10:23:04mkdir /singleusersmb
+   47  2020-11-21 10:23:47vim /etc/fstab
+   48  2020-11-21 10:25:34mount -a
+   49  2020-11-21 10:26:06vim /etc/fstab
+   50  2020-11-21 10:26:41mount -a
+   51  2020-11-21 10:26:46df -h
+   52  2020-11-21 10:42:30mkdir /mnt/akon
+   53  2020-11-21 10:43:04cat > /root/sec
+   54  2020-11-21 10:43:57getsebool -a |grep samba
+   55  2020-11-21 10:44:07getsebool -a |grep samba -i
+   56  2020-11-21 10:44:22getsebool -a |grep -i samba
+   57  2020-11-21 10:45:05getenforce
+   58  2020-11-21 10:45:22vim /etc/sysconfig/selinux
+   59  2020-11-21 10:45:41getenforce
+   60  2020-11-21 10:45:56getsebool -a |grep -i samba
+   61  2020-11-21 10:46:23setsebool -P samba_exports_all_ro on
+   62  2020-11-21 10:51:20history
+   63  2020-11-21 10:52:44export HISTTIMEFORMAT="%F %T"
+   64  2020-11-21 10:52:49HISTORY
+   65  2020-11-21 10:52:53history
+   66  2020-11-21 10:55:19reboot
+   67  2020-11-21 11:00:51getsebool -a |grep samba -i
+   68  2020-11-21 11:01:47setsebool -P samba_export_all_ro on
+   69  2020-11-21 11:02:07setsebool -P samba_export_all_rw on
+   70  2020-11-21 11:02:25chmod 600 /root/sec
+   71  2020-11-21 11:02:50vim /etc/fstab
+   72  2020-11-21 11:05:08mount -s
+   73  2020-11-21 11:05:11mount -a
